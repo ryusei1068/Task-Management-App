@@ -1,15 +1,17 @@
-// text area リサイズ　https://into-the-program.com/javascript-textarea-auto-adjusts-height/
-// https://qiita.com/y0o0suke/items/2402af42728131a01dc6
-
 import React from "react";
-
+import TextareaAutosize from 'react-textarea-autosize';
+import { BsTrash } from 'react-icons/bs'
 
 function Task(props) {
+    
     return (
         <>
             <div className="card-body">
-                <div className="">
-                    <textarea name="" id="" defaultValue="text" placeholder="task" className="w-100 task-name"></textarea>
+                <div className="d-flex align-items-end">
+                    <TextareaAutosize className="task-name" defaultValue={props.name}/>
+                    <div className="trash-box-icon" onClick={() => props.deleteTask(props.id)}>
+                        <BsTrash />
+                    </div>
                 </div>                          
             </div>
         </>

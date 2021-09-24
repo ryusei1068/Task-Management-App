@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
 
 function App(props) {
-    const [sections, setSection] = useState(props.sections);
+    const [sections, setSections] = useState(props.sections);
     const [sectionName, setSectionName] = useState("");
     const [canBeInput, setCanBeInput] = useState(false);
 
@@ -28,15 +28,21 @@ function App(props) {
         e.preventDefault();
         if (sectionName.length === 0) return ;
         const newSections = { id: `section-${nanoid()}`, name: sectionName };
-        setSection([...sections, newSections])
+        setSections([...sections, newSections])
         setCanBeInput(false)
         setSectionName("")
     }
 
+    const deleteSection = (id) => {
+        const remainSections = sections.filter(section => (id !== section.id));
+        setSections(remainSections);
+    }
+
+
     const enterSectionName = 
-        <div className="bg-white enter-section-name">
+        <div className="bg-white enter-section-name mx-2">
             <form onSubmit={handleSubmit}>
-                <input className="m-1" type="text" placeholder="Enter list title…" maxLength="25" onChange={handleChange} />
+                <input className="m-1" type="text" autoFocus={true} placeholder="Enter list title…" maxLength="30" onChange={handleChange} />
                 <div className="add-section">
                     <button className="btn btn-primary add-list-btn m-1" type="submit">Add List</button>
                     <button className="m-1 btn-times" onClick={canselAddSection}><FaTimes/></button>
@@ -55,12 +61,14 @@ function App(props) {
             id={section.id}
             key={section.id}
             name={section.name}
+            section={section.name}
+            deleteSection={deleteSection}
         />
     ))
 
     return (
         <>
-        <div className="brod-wrapper">
+        <div className="board-wrapper">
             <div className="mt-3 board-canvas">
                 {sectionList}
                 <div className="mx-1">
