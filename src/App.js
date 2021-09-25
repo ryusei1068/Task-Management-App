@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskSection from "./components/task-section";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FaTimes } from "react-icons/fa"
+import { VscClose } from "react-icons/vsc";
 import { nanoid } from "nanoid";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
@@ -9,15 +9,15 @@ import "./App.css"
 function App(props) {
     const [sections, setSections] = useState(props.sections);
     const [sectionName, setSectionName] = useState("");
-    const [canBeInput, setCanBeInput] = useState(false);
+    const [enterMode, setEnterMode] = useState(false);
 
     const addSection = () => {
-        setCanBeInput(true);
+        setEnterMode(true);
     }
 
-    const canselAddSection = (e) => {
+    const cancelAddSection = (e) => {
         e.preventDefault()
-        setCanBeInput(false)
+        setEnterMode(false)
     }
 
     const handleChange = (e) => {
@@ -27,30 +27,30 @@ function App(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (sectionName.length === 0) return ;
-        const newSections = { id: `section-${nanoid()}`, name: sectionName };
-        setSections([...sections, newSections])
-        setCanBeInput(false)
+        const newSection = { id: `section-${nanoid()}`, name: sectionName };
+        setSections([...sections, newSection])
+        setEnterMode(false)
         setSectionName("")
     }
 
     const deleteSection = (id) => {
-        const remainSections = sections.filter(section => (id !== section.id));
-        setSections(remainSections);
+        const remainingSections = sections.filter(section => (id !== section.id));
+        setSections(remainingSections);
     }
 
 
     const enterSectionName = 
-        <div className="bg-white enter-section-name mx-2">
+        <div className="enter-section-name-wrap mx-2">
             <form onSubmit={handleSubmit}>
-                <input className="m-1" type="text" autoFocus={true} placeholder="Enter list title…" maxLength="30" onChange={handleChange} />
+                <input className="m-1" type="text" autoFocus={true} placeholder="Enter list title…" maxLength="500" onChange={handleChange} />
                 <div className="add-section">
                     <button className="btn btn-primary add-list-btn m-1" type="submit">Add List</button>
-                    <button className="m-1 btn-times" onClick={canselAddSection}><FaTimes/></button>
+                    <button className="btn-vscClose" onClick={cancelAddSection}><VscClose/></button>
                 </div>
             </form>
         </div>
 
-    const addAnoterList = 
+    const addAnotherListBtn = 
         <button className="btn add-list" onClick={addSection}>
             <AiOutlinePlus/> Add another list
         </button>
@@ -69,10 +69,10 @@ function App(props) {
     return (
         <>
         <div className="board-wrapper">
-            <div className="mt-3 board-canvas">
+            <div className="board-canvas">
                 {sectionList}
                 <div className="mx-1">
-                    {canBeInput ? enterSectionName : addAnoterList}
+                    {enterMode ? enterSectionName : addAnotherListBtn}
                 </div>
             </div>
         </div>

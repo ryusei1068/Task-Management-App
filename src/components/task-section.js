@@ -3,8 +3,7 @@ import Task from "./task";
 import { AiOutlinePlus } from "react-icons/ai"
 import { nanoid } from "nanoid";
 import TextareaAutosize from 'react-textarea-autosize';
-import { FaTimes } from "react-icons/fa"
-import { BsTrash } from 'react-icons/bs'
+import { VscClose } from "react-icons/vsc"
 
 
 function TaskSection(props) {
@@ -64,29 +63,38 @@ function TaskSection(props) {
 
     const sectionName =
         <> 
-            <div className="pt-3 sectionName-wrap" onMouseOver={enable}>
-                <TextareaAutosize className="section-title w-100" defaultValue={props.name} onKeyPress={(e) => keyPress(e)} disabled={isDisAbled}/>
-                <div className="trash-box-icon" onClick={() => props.deleteSection(props.id)}>
-                    <BsTrash />
+            <div 
+                className="pt-3 sectionName-wrap" 
+                onMouseOver={enable}>
+                    <TextareaAutosize 
+                        className="section-title w-100" 
+                        defaultValue={props.name} 
+                        onKeyPress={(e) => keyPress(e)} 
+                        disabled={isDisAbled}
+                    />
+                <div 
+                    className="trash-box-icon" 
+                    onClick={() => props.deleteSection(props.id)}>
+                        < VscClose />
                 </div>
             </div>
         </>
 
     const enterTaskName = 
-        <div className="enter-task-name card-body">
+        <div className="enter-task-name m-3">
             <form onSubmit={handleSubmit}>
-                <input className="m-1" type="text" placeholder="Enter task name…" maxLength="30" onChange={handleChange} autoFocus={true} />
+                <input className="m-1" type="text" placeholder="Enter task name…" maxLength="500" onChange={handleChange} autoFocus={true} />
                 <div className="add-task">
                     <button className="btn btn-primary m-1" type="submit">Add Task</button>
-                    <button className="m-1 cancel-btn" onClick={cancelAddTask}><FaTimes/></button>
+                    <button className="m-1 cancel-btn" onClick={cancelAddTask}><VscClose/></button>
                 </div>
             </form>
         </div>
 
-    const addTaskBtn = 
-                <button className="btn add-task my-1 mx-1" onClick={addAnoterTask}>
-                    <AiOutlinePlus/> Add a Card
-                </button>
+    const addCardBtn = 
+        <button className="btn m-1" onClick={addAnoterTask}>
+            <AiOutlinePlus/> Add a Card
+        </button>
 
     return  (
         <>
@@ -95,10 +103,10 @@ function TaskSection(props) {
                     <div className="mx-3">
                         {sectionName}
                     </div>
-                    <div className="card">
+                    <div className="task-cards">
                         {taskList}
                     </div>
-                    {!inActive ? addTaskBtn : enterTaskName}
+                    {!inActive ? addCardBtn : enterTaskName}
                 </div>
             </div>
         </>
