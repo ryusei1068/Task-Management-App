@@ -16,29 +16,24 @@ function Task(props) {
     }
 
     const upDateTaskName =
-    <> 
-        <TextareaAutosize 
-            className="task-name" 
-            defaultValue={props.name}
-            onKeyPress={(e) => keyPress(e)} 
-            disabled={editMode}
-            onMouseOver={changeStatus}
-        />
-    </>
+            <TextareaAutosize 
+                className="task-name" 
+                defaultValue={props.name}
+                onKeyPress={(e) => keyPress(e)} 
+                disabled={editMode}
+                onMouseOver={changeStatus}
+            />
 
     const editDetail = 
-    <>
-        <TextareaAutosize 
-            className="task-detail" 
-            defaultValue=""
-            onKeyPress={(e) => keyPress(e)} 
-            disabled={editMode}
-            onMouseOver={changeStatus}
-        />
-    </>
-    
+            <TextareaAutosize 
+                className="task-detail" 
+                defaultValue=""
+                onKeyPress={(e) => keyPress(e)} 
+                disabled={editMode}
+                onMouseOver={changeStatus}
+            />
+        
     return (
-        <>
             <div className="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
                 <div className="toast-header">
                     {upDateTaskName}
@@ -51,8 +46,7 @@ function Task(props) {
                     {editDetail}
                 </div>
             </div>
-        </>
-    )
+        )
 }
 
 

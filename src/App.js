@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskSection from "./components/task-section";
-import { AiOutlinePlus } from "react-icons/ai";
-import { VscClose } from "react-icons/vsc";
+import EnterArea from "./components/enterArea";
+import AddButton from "./components/addButton";
 import { nanoid } from "nanoid";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
@@ -39,20 +39,21 @@ function App(props) {
     }
 
     const enterSectionName = 
-        <div className="enter-section-name-wrap mx-2">
-            <form onSubmit={handleSubmit}>
-                <input className="m-1" type="text" autoFocus={true} placeholder="Enter list title…" maxLength="500" onChange={handleChange} />
-                <div className="add-section">
-                    <button className="btn btn-primary add-list-btn m-1" type="submit">Add List</button>
-                    <button className="btn-vscClose" onClick={cancelAddSection}><VscClose/></button>
-                </div>
-            </form>
-        </div>
+            <EnterArea 
+                handleSubmit={handleSubmit}
+                wrap="enter-section-name-wrap"
+                handleChange={handleChange}
+                text="Add List"
+                placeholder="Enter list title..."
+                cancel={cancelAddSection}
+            />
 
     const addAnotherListBtn = 
-        <button className="btn add-list" onClick={addSection}>
-            <AiOutlinePlus/> Add another list
-        </button>
+            <AddButton 
+                addElement={addSection}
+                text="Add another list"
+                addClassName="add-list"    
+            />
 
     const sectionList = sections
     .map(section => (
@@ -62,12 +63,10 @@ function App(props) {
             name={section.name}
             section={section.name}
             deleteSection={deleteSection}
-            draggable={true}
         />
     ))
 
     return (
-        <>
             <div className="board-wrapper">
                 <div className="board-canvas">
                     {sectionList}
@@ -76,8 +75,7 @@ function App(props) {
                     </div>
                 </div>
             </div>
-        </>
-    )
+        )
 }
 
 export default App;

@@ -20,6 +20,7 @@ body{
 
 textarea {
     resize: none;
+    border: none;
 }
 
 .list-wrapper, .enter-section-name-wrap {
@@ -34,7 +35,7 @@ textarea {
     background-color: rgb(239, 239, 239);
 }
 
-.task-name, input, .section-title, .cancel-btn, .btn-vscClose, .task-detail{
+.task-name, input, .section-title, .btn .task-detail{
     border: none;
 }
 
@@ -43,9 +44,7 @@ textarea {
     align-items: center;
 }
 
-.btn-vscClose {
-    background-color: white;
-}
+
 
 .enter-section-name-wrap {
     height: 85px;
