@@ -9,28 +9,28 @@ import { VscClose } from "react-icons/vsc"
 
 function TaskSection(props) {
     const [tasks, setTasks] = useState([]);
-    const [isDisAbled, setDisAbled] = useState(true);
+    const [enable, setEnable] = useState(true);
     const [taskName, setTaskName] = useState("");
-    const [inActive, setInActive] = useState(false);
+    const [enterMode, setEnterMode] = useState(false);
 
 
     const keyPress = (e) => {
         if (e.which === 13) {
-            setDisAbled(true)
+            setEnable(true)
         }
     }
 
-    const enable = () => {
-        setDisAbled(false);
+    const enableToEnter = () => {
+        setEnable(false);
     }
 
     const cancelAdd = (e) => {
         e.preventDefault();
-        setInActive(false)
+        setEnterMode(false)
     }
 
     const addCard = () => {
-        setInActive(true);
+        setEnterMode(true);
     }
 
     const handleChange = (e) => {
@@ -42,7 +42,7 @@ function TaskSection(props) {
         if (taskName.length === 0) return ;
         const newTask = { id: `task-${nanoid()}`, name: taskName};
         setTasks([...tasks, newTask])
-        setInActive(false)
+        setEnterMode(false)
         setTaskName("");
     }
 
@@ -75,18 +75,18 @@ function TaskSection(props) {
     const addTaskBtn = 
             <AddButton 
                 addElement={addCard}
-                text="Add Card"
+                text="Add a Card"
             />
 
     const sectionName =
             <div 
                 className="pt-3 sectionName-wrap" 
-                onMouseOver={enable}>
+                onMouseOver={enableToEnter}>
                     <TextareaAutosize 
                         className="section-title w-100" 
                         defaultValue={props.name} 
                         onKeyPress={(e) => keyPress(e)} 
-                        disabled={isDisAbled}
+                        disabled={enable}
                     />
                 <div 
                     className="trash-box-icon" 
@@ -104,7 +104,7 @@ function TaskSection(props) {
                     <div className="task-cards">
                         {taskList}
                     </div>
-                        {!inActive ? addTaskBtn : enterTaskName}
+                        {!enterMode ? addTaskBtn : enterTaskName}
                 </div>
             </div>
         )

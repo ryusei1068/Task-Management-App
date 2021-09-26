@@ -44,8 +44,6 @@ textarea {
     align-items: center;
 }
 
-
-
 .enter-section-name-wrap {
     height: 85px;
     background-color: white;
@@ -65,13 +63,13 @@ textarea {
     color: rgb(25, 37, 66);
 }
 
-.trash-box-icon {
+/* .trash-box-icon {
     opacity: 0;
 }
 
 .trash-box-icon:hover {
     opacity: 1;
-}
+} */
 
 .task-name, .task-detail {
     width: 100%;

@@ -9,15 +9,15 @@ import "./App.css"
 function App(props) {
     const [sections, setSections] = useState(props.sections);
     const [sectionName, setSectionName] = useState("");
-    const [enterMode, setEnterMode] = useState(false);
+    const [enableToEnter, setEnableToEnter] = useState(false);
 
     const addSection = () => {
-        setEnterMode(true);
+        setEnableToEnter(true);
     }
 
-    const cancelAddSection = (e) => {
+    const cancelAdd = (e) => {
         e.preventDefault()
-        setEnterMode(false)
+        setEnableToEnter(false)
     }
 
     const handleChange = (e) => {
@@ -29,7 +29,7 @@ function App(props) {
         if (sectionName.length === 0) return ;
         const newSection = { id: `section-${nanoid()}`, name: sectionName };
         setSections([...sections, newSection])
-        setEnterMode(false)
+        setEnableToEnter(false)
         setSectionName("")
     }
 
@@ -45,7 +45,7 @@ function App(props) {
                 handleChange={handleChange}
                 text="Add List"
                 placeholder="Enter list title..."
-                cancel={cancelAddSection}
+                cancel={cancelAdd}
             />
 
     const addAnotherListBtn = 
@@ -61,8 +61,8 @@ function App(props) {
             id={section.id}
             key={section.id}
             name={section.name}
-            section={section.name}
             deleteSection={deleteSection}
+            className="section"
         />
     ))
 
@@ -71,7 +71,7 @@ function App(props) {
                 <div className="board-canvas">
                     {sectionList}
                     <div className="mx-1">
-                        {enterMode ? enterSectionName : addAnotherListBtn}
+                        {enableToEnter ? enterSectionName : addAnotherListBtn}
                     </div>
                 </div>
             </div>
