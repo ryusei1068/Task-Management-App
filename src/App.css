@@ -22,8 +22,8 @@ textarea {
     resize: none;
 }
 
-.list-wrapper {
-    border-radius: 2px;
+.list-wrapper, .enter-section-name-wrap {
+    border-radius: 5px;
 }
 
 .list-wrapper, .section-title {

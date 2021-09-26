@@ -38,7 +38,6 @@ function App(props) {
         setSections(remainingSections);
     }
 
-
     const enterSectionName = 
         <div className="enter-section-name-wrap mx-2">
             <form onSubmit={handleSubmit}>
@@ -63,19 +62,20 @@ function App(props) {
             name={section.name}
             section={section.name}
             deleteSection={deleteSection}
+            draggable={true}
         />
     ))
 
     return (
         <>
-        <div className="board-wrapper">
-            <div className="board-canvas">
-                {sectionList}
-                <div className="mx-1">
-                    {enterMode ? enterSectionName : addAnotherListBtn}
+            <div className="board-wrapper">
+                <div className="board-canvas">
+                    {sectionList}
+                    <div className="mx-1">
+                        {enterMode ? enterSectionName : addAnotherListBtn}
+                    </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }

@@ -11,7 +11,7 @@ function Task(props) {
         }
     }
 
-    const enable = () => {
+    const changeStatus = () => {
         setEditMode(false)
     }
 
@@ -22,7 +22,7 @@ function Task(props) {
             defaultValue={props.name}
             onKeyPress={(e) => keyPress(e)} 
             disabled={editMode}
-            onMouseOver={enable}
+            onMouseOver={changeStatus}
         />
     </>
 
@@ -33,7 +33,7 @@ function Task(props) {
             defaultValue=""
             onKeyPress={(e) => keyPress(e)} 
             disabled={editMode}
-            onMouseOver={enable}
+            onMouseOver={changeStatus}
         />
     </>
     
