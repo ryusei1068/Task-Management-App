@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/task-management-app/static/css/main.a08b6d5a.chunk.css",
-    "main.js": "/task-management-app/static/js/main.1a47419a.chunk.js",
-    "main.js.map": "/task-management-app/static/js/main.1a47419a.chunk.js.map",
-    "runtime-main.js": "/task-management-app/static/js/runtime-main.c5ad34a1.js",
-    "runtime-main.js.map": "/task-management-app/static/js/runtime-main.c5ad34a1.js.map",
-    "static/css/2.f2512455.chunk.css": "/task-management-app/static/css/2.f2512455.chunk.css",
-    "static/js/2.0008c44e.chunk.js": "/task-management-app/static/js/2.0008c44e.chunk.js",
-    "static/js/2.0008c44e.chunk.js.map": "/task-management-app/static/js/2.0008c44e.chunk.js.map",
-    "index.html": "/task-management-app/index.html",
-    "static/css/2.f2512455.chunk.css.map": "/task-management-app/static/css/2.f2512455.chunk.css.map",
-    "static/css/main.a08b6d5a.chunk.css.map": "/task-management-app/static/css/main.a08b6d5a.chunk.css.map",
-    "static/js/2.0008c44e.chunk.js.LICENSE.txt": "/task-management-app/static/js/2.0008c44e.chunk.js.LICENSE.txt"
+    "main.css": "/Task-Management-App/static/css/main.a08b6d5a.chunk.css",
+    "main.js": "/Task-Management-App/static/js/main.1a47419a.chunk.js",
+    "main.js.map": "/Task-Management-App/static/js/main.1a47419a.chunk.js.map",
+    "runtime-main.js": "/Task-Management-App/static/js/runtime-main.15d76b13.js",
+    "runtime-main.js.map": "/Task-Management-App/static/js/runtime-main.15d76b13.js.map",
+    "static/css/2.f2512455.chunk.css": "/Task-Management-App/static/css/2.f2512455.chunk.css",
+    "static/js/2.0008c44e.chunk.js": "/Task-Management-App/static/js/2.0008c44e.chunk.js",
+    "static/js/2.0008c44e.chunk.js.map": "/Task-Management-App/static/js/2.0008c44e.chunk.js.map",
+    "index.html": "/Task-Management-App/index.html",
+    "static/css/2.f2512455.chunk.css.map": "/Task-Management-App/static/css/2.f2512455.chunk.css.map",
+    "static/css/main.a08b6d5a.chunk.css.map": "/Task-Management-App/static/css/main.a08b6d5a.chunk.css.map",
+    "static/js/2.0008c44e.chunk.js.LICENSE.txt": "/Task-Management-App/static/js/2.0008c44e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c5ad34a1.js",
+    "static/js/runtime-main.15d76b13.js",
     "static/css/2.f2512455.chunk.css",
     "static/js/2.0008c44e.chunk.js",
     "static/css/main.a08b6d5a.chunk.css",
