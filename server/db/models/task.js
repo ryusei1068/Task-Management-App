@@ -10,17 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Task.belongsTo(models.User, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      })
     }
   };
   Task.init({
+    userid: DataTypes.STRING,
     category: DataTypes.STRING,
-    title: DataTypes.STRING,
-    detail: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    taskname: DataTypes.STRING,
+    detail: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Task',
