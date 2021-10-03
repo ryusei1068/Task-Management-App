@@ -12,8 +12,10 @@ body{
 }
 
 .add-list {
-    width: 250px;
     background-color: rgb(120, 192, 255);
+}
+.add-list {
+    width: 250px;
     color: aliceblue;
     text-align: left;
 }
