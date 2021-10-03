@@ -7,23 +7,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userid: {
+        type: Sequelize.STRING,
+      },
       category: {
         type: Sequelize.STRING
       },
-      title: {
+      taskname: {
         type: Sequelize.STRING
       },
       detail: {
         type: Sequelize.STRING
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Users',
-          key: 'id',
-          as: 'userId',
-        }
       },
       createdAt: {
         allowNull: false,

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/models/index');
-
+const { v4: uuidv4 } = require('uuid');
+const CryptoJS = require("crypto-js");
 
 router.use(function timeLog(req, res, next) {
     console.log('login at ', Date.now())
@@ -9,39 +10,28 @@ router.use(function timeLog(req, res, next) {
 })
 
 router.post('/login', async (req, res) => {
-    console.log(req.ip);
     const User = db.sequelize.models.User;
     const key = Object.keys(req.body)[0];
-    
-    // const [user, created] = await User.findOrCreate({
-    //     where: { username: req.body[key] },
-    //     defaults: {
-    //         username: req.body[key]
-    //     }
-    // });
+    const uuid = uuidv4();
+    const hash = CryptoJS.SHA256(uuid);
 
     User.findOrCreate({
         where: { username: req.body[key] },
         defaults: {
-            username: req.body[key]
+            username: req.body[key],
+            userid: hash.toString(CryptoJS.enc.Hex)
         }
     }).then(([user, created]) => {
         if (created) {
             res.json({
                 enable: true,
-                id: user.id
+                userid: uuid
             })
         }
         else  {
             res.json({enable: false})
         }
     })
-    // if (created) {
-    //     res.json({enable: true})
-    // }
-    // else {
-    //     res.json({enable: false})
-    // }
 })
 
 module.exports = router;
