@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://ryusei1068.github.io/Task-Management-App",
+  "type":"module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^5.1.1",
+    "firebase": "^9.1.1",
     "gh-pages": "^3.2.3",
     "nanoid": "^3.1.25",
     "react": "^17.0.2",
