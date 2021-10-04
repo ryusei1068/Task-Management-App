@@ -35,6 +35,7 @@ router.post('/login', (req, res) => {
     })
     .catch((err) => {
         console.error(`error message : ${err}`);
+        res.send(err)
     })
 })
 

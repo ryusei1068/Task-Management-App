@@ -5,10 +5,6 @@ function LoginForm() {
     const uri = 'http://localhost:8080/login'
     const [userName, setUserName] = useState("");
 
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
-
     const handleChange = (e) => {
         setUserName(e.target.value);
     }
@@ -17,14 +13,22 @@ function LoginForm() {
         e.preventDefault();
         fetch(uri, {
             method: 'POST',
-            body: JSON.stringify( {usename: userName })
+            headers:{'Content-Type': 'application/json'},
+            mode: 'cors',
+            body: JSON.stringify( {username: userName })
         })
         .then(res => {
-            console.log(res.json());
+            console.log(res);
+            res.json()
+        })
+        .then(data => {
+            console.log(data);
         })
         .catch(err => {
             console.error(err);
         })
+
+        setUserName("")
     }
 
     return (
@@ -33,9 +37,9 @@ function LoginForm() {
                 <div className="title">small tasks</div>
                 <div className="log-form">
                     <h2>login to your account</h2>
-                    <form className="d-flex flex-column align-items-end" onSubmit={handleSubmit}>
+                    <form className="d-flex flex-column align-items-end" onSubmit={handleSubmit}> 
                         <div className="w-100">
-                            <input type="text" title="username" placeholder="username" maxLength="255" className="w-100" onChange={handleChange}/>
+                            <input type="text" title="username" placeholder="username" maxLength="255" className="w-100" onChange={handleChange} value={userName}/>
                         </div>
                         <div className="mt-2">
                             <button type="submit" className="btn btn-outline-info">login</button>
