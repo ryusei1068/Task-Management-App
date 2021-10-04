@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import TaskSection from "./components/task-section";
 import EnterArea from "./components/enterArea";
 import AddButton from "./components/addButton";
 import { nanoid } from "nanoid";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
+import TopPage from "./components/pages/toppage";
+import LoginForm from "./components/pages/loginform";
+
 
 function App(props) {
     const [sections, setSections] = useState(props.sections);
@@ -67,14 +71,24 @@ function App(props) {
     ))
 
     return (
-            <div className="board-wrapper">
-                <div className="board-canvas">
-                    {sectionList}
-                    <div className="mx-1">
-                        {enableToEnter ? enterSectionName : addAnotherListBtn}
-                    </div>
-                </div>
-            </div>
+            // <div className="board-wrapper">
+            //     <div className="board-canvas">
+            //         {sectionList}
+            //         <div className="mx-1">
+            //             {enableToEnter ? enterSectionName : addAnotherListBtn}
+            //         </div>
+            //     </div>
+            // </div>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/">
+                        <TopPage/>
+                    </Route>
+                    <Route path="/login">
+                        <LoginForm/>
+                    </Route>
+                </Switch>
+            </BrowserRouter>
         )
 }
 
