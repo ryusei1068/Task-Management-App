@@ -103,3 +103,8 @@ textarea {
 .toast-header {
     align-items: flex-end;
 }
+
+a {
+    text-decoration:none; 
+    color: darkgrey;
+}
