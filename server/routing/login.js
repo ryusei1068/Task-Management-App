@@ -9,7 +9,7 @@ router.use(function timeLog(req, res, next) {
     next()
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     console.log(req.body);
     const User = db.sequelize.models.User;
     const key = Object.keys(req.body)[0];
@@ -29,13 +29,15 @@ router.post('/login', (req, res) => {
                 userid: uuid
             })
         }
-        else  {
-            res.json({enable: false})
+        else {  
+            res.json({
+                enable: false
+            })
         }
     })
     .catch((err) => {
-        console.error(`error message : ${err}`);
-        res.send(err)
+        console.error(err);
+        res.status(500)
     })
 })
 

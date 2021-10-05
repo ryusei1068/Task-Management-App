@@ -17,13 +17,10 @@ function LoginForm() {
             mode: 'cors',
             body: JSON.stringify( {username: userName })
         })
-        .then(res => {
-            console.log(res);
-            res.json()
-        })
+        .then(res => res.json())
         .then(data => {
             console.log(data);
-        })
+        }) 
         .catch(err => {
             console.error(err);
         })
