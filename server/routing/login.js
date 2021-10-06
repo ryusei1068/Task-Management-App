@@ -10,7 +10,6 @@ router.use(function timeLog(req, res, next) {
 })
 
 router.post('/login', async (req, res) => {
-    console.log(req.body);
     const User = db.sequelize.models.User;
     const key = Object.keys(req.body)[0];
     const uuid = uuidv4();

@@ -11,6 +11,7 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        operateIndexDB();
         fetch(uri, {
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
@@ -26,6 +27,19 @@ function LoginForm() {
         })
 
         setUserName("")
+    }
+
+    const operateIndexDB = () => {
+        const request = indexedDB.open("smallTasks");
+
+        request.onerror = (event) => {
+            console.log(`Database error:  ${event.target.errorCode}`);
+        }
+
+        request.onupgradeneeded =  (event) => {
+            const db = event.target.result;
+            db.createObjectStore("userid", { keyPath: "id" });
+        };
     }
 
     return (
