@@ -11,14 +11,16 @@ router.use(function timeLog(req, res, next) {
 
 router.post('/login', async (req, res) => {
     const User = db.sequelize.models.User;
-    const key = Object.keys(req.body)[0];
+    const keys = Object.keys(req.body);
     const uuid = uuidv4();
     const hash = CryptoJS.SHA256(uuid);
 
+    console.log(keys);    
+
     User.findOrCreate({
-        where: { username: req.body[key] },
+        where: { username: req.body[keys[0]] },
         defaults: {
-            username: req.body[key],
+            username: req.body[keys[0]],
             userid: hash.toString(CryptoJS.enc.Hex)
         }
     }).then(([user, created]) => {

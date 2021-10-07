@@ -1,4 +1,5 @@
 import React, { useState }  from "react";
+import { DropdownButton } from "react-bootstrap";
 
 
 function LoginForm() {
@@ -10,36 +11,53 @@ function LoginForm() {
     }
 
     const handleSubmit = (e) => {
+        if (userName.length === 0) return ;
         e.preventDefault();
-        operateIndexDB();
-        fetch(uri, {
-            method: 'POST',
-            headers:{'Content-Type': 'application/json'},
-            mode: 'cors',
-            body: JSON.stringify( {username: userName })
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        }) 
-        .catch(err => {
-            console.error(err);
-        })
 
-        setUserName("")
-    }
-
-    const operateIndexDB = () => {
+        let db;
         const request = indexedDB.open("smallTasks");
-
         request.onerror = (event) => {
             console.log(`Database error:  ${event.target.errorCode}`);
         }
+    
+        request.onupgradeneeded = (event) => {
+            db = event.target.result;
+            const objectStore = db.createObjectStore("userid", { keyPath: "id" });
+            objectStore.transaction.concomplete = () => {
+                console.log("created");
+            }
 
-        request.onupgradeneeded =  (event) => {
-            const db = event.target.result;
-            db.createObjectStore("userid", { keyPath: "id" });
         };
+    
+        request.onsuccess = (event) => {
+            console.log('Connection has been established successfully.');
+            db = event.target.result;
+            console.log(db.objectStoreNames.id);
+            const userid = db.objectStoreNames.id === undefined ? "" : db.objectStoreNames.id;
+
+
+            fetch(uri, {
+                method: 'POST',
+                headers:{'Content-Type': 'application/json'},
+                mode: 'cors',
+                body: JSON.stringify( {
+                    username: userName,
+                    userid: userid
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                
+                console.log(db);
+
+            }) 
+            .catch(err => {
+                console.error(err);
+            })
+
+        }
+        setUserName("")
     }
 
     return (
