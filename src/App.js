@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
 import TopPage from "./components/pages/toppage";
 import LoginForm from "./components/pages/loginform";
+import SignUpForm from "./components/pages/signupform";
 
 
 function App(props) {
@@ -86,6 +87,9 @@ function App(props) {
                     </Route>
                     <Route path="/login">
                         <LoginForm/>
+                    </Route>
+                    <Route path="/signup">
+                        <SignUpForm/>
                     </Route>
                 </Switch>
             </BrowserRouter>

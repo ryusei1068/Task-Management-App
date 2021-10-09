@@ -2,7 +2,7 @@
   "name": "task-management-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ryusei1068.github.io/Task-Management-App",
+  "homepage": "https://ryusei1068.github.io/",
   "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
